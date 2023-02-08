@@ -77,10 +77,10 @@ function draw() {
   ellipse(311,105,70,40);
     
   fill(245,198,27)
-  ellipse(sw,50,60,60)// Sun
+  ellipse(sw*1.6,50,60,60)// Sun
     
   fill(230,230,230,sw)
-  ellipse(sw*1,50,60,60)// Moon  
+  ellipse(sw*1.6,50,60,60)// Moon  
 
 }
 
