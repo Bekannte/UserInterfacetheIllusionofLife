@@ -9,66 +9,79 @@ var a;
 let displayState = 0;
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight);
+  // canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(400, 400);
   canvas.parent("sketch-container");
-
-  // saveButton = createButton("save");
-  // saveButton.mousePressed(saveFile);
-
-  // clearButton = createButton("clear");
-  // clearButton.mousePressed(clearScreen);
-
-  // fullscreenButton = createButton("Full Screen");
-  // fullscreenButton.mousePressed(screenFull);
-
-  // brushSlider = createButton("Brush Size");
-  // sizeSlider = createSlider(1, 10);
 
   addGUI();
 }
 
-// function saveFile() {
-//   save("design.jpg");
-// }
-
-// function screenFull() {
-//   let fs = fullscreen();
-//   fullscreen(!fs);
-// }
-
-// function clearScreen() {
-//   background(255);
-// }
-
 function draw() {
-  translate(width, height);
 
-  if ((mouseX > 0) & (mouseY > 0)) {
-    let x = mouseX - width;
-    let y = mouseY - height / 2;
-    let x1 = mouseX - width;
-    let y2 = mouseY - height;
+  background(0,150,200);//sky
 
-    if (mouseIsPressed) {
-      let sw = slider.value();
-      push();
-      r = random(255, 200); // r is a random number between 0 - 255
-      g = random(200, 10); // g is a random number betwen 100 - 200
-      b = random(300, 100); // b is a random number between 0 - 100
-      a = random(200, 100); // a is a random number between 200 - 255
+  let sw = slider.value();
+  
+  fill(33,35,36,sw)
+  quad(0,0,400,0,400,400,0,400)//NIGHT SKY	
+  
+  noStroke(0)
+  fill(133,117,95)
+  quad(0,200,400,200,400,400,0,400)//ground
+  
+  noStroke(0)
+  fill(252,211,73,sw*-1)	
+  quad(0,200,400,200,400,400,0,400)// ground NIGHT
+  
+  strokeWeight(5);// Left Cloud
+  noStroke(230);
+  fill(255,255,255,sw*-1);
+  ellipse(114,113,80,30);
+  ellipse(65,128,50,30);
+  ellipse(128,100,30,20);
+  ellipse(129,130,50,30);
+  ellipse(97,135,70,40);
+  
+  fill(245,160,49)
+  triangle(215,310,375,310,290,140)// right pyramid 
+  
+  fill(173,128,69,sw)
+  triangle(215,310,375,310,290,140)// NIGHT front right pyramid
+  
+  
+  fill(207,119,4)
+  triangle(290,140,364,272,375,310)// right side of the second pyramid
+  
+  fill(61,55,54,sw)
+  triangle(290,140,364,272,375,310)// NIGHT right side of triangle 3D right 
+    
+  fill(245,160,49)
+  triangle(10,320,210,320,110,100)// pyramid 
+  
+  fill(173,128,69,sw)
+  triangle(10,320,210,320,110,100)// NIGHT left front pyramid
+    
+  fill(207,119,4)
+  triangle(110,100,200,269,210,320)// right side of triangle 3D left
+    
+  fill(61,55,53,sw)
+  triangle(110,100,200,269,210,320)// NIGHT right side of triangle 3D left
+    
+  strokeWeight(5);//right Cloud
+  noStroke(230);
+  fill(255,255,255,sw*-1);
+  ellipse(314,83,80,30);
+  ellipse(270,98,50,30);
+  ellipse(342,75,30,20);
+  ellipse(343,100,50,30);
+  ellipse(311,105,70,40);
+    
+  fill(245,198,27)
+  ellipse(sw,50,60,60)// Sun
+    
+  fill(230,230,230,sw)
+  ellipse(sw*1,50,60,60)// Moon  
 
-      if (displayState == 0) {
-        stroke(r, g, b, a);
-        strokeWeight(sw);
-        line(x, y, x1, y2);
-        pop();
-      } else {
-        stroke(r, g, b, a);
-        strokeWeight(sw);
-        rect(x, y, x1, y2);
-      }
-    }
-  }
 }
 
 function addGUI() {
@@ -106,6 +119,7 @@ function handleButtonPress(){
 
 function windowResized() {
 
-  resizeCanvas(windowWidth, windowHeight);
+  // resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(400, 400);
 
 }
